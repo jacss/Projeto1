@@ -6,51 +6,68 @@ import java.util.Scanner;
 public class Projeto1 {
 
 	public static void main(String[] args) {
+		// Classe para entrada de dados
 		Scanner sc = new Scanner(System.in);
-		int opcao;
+		int opcao;// Variável de escolha para cada entrada de dados
 		boolean sair = false;
 
 		do {
 			System.out.println("----------------------");
+			// Menu de interação com o usuário
 			System.out.println("Escolha uma opção: \n 1.Soma\n 2.Subtração\n 3.Divisão\n 4.Faixa Etária\n "
 					+ "5.Números Primos\n 6.Mudança de Base\n 7.Sair");
-			
+			// Pege o que o usuário digitou atraves do teclado.
 			opcao = sc.nextInt();
 
 			switch (opcao) {
 			case 1:
+				// Array com 3 posições
 				int[] numSoma = new int[2];
 				int soma = 0;
+				// Interação que ecebe os numeros para serem somados
 				for (int i = 0; i < numSoma.length; i++) {
+					// Classe que exibe informaçoes na tela
 					System.out.println("Digite o " + (i + 1) + "º" + " número.");
+					// Captura informações do teclado
 					numSoma[i] = sc.nextInt();
+					// Soma os numeros
 					soma += numSoma[i];
 				}
-				System.out.printf("A soma entre %d e %d é %d \n",numSoma[0],numSoma[1],soma);
+				// Classe que apresante os numeros digitados e a soma dos mesmos
+				System.out.printf("A soma entre %d e %d é %d \n", numSoma[0], numSoma[1], soma);
 				break;
 			case 2:
+				// Array com 3 posições
 				int[] numSub = new int[2];
 				int subtracao;
+				// Interação que ecebe os numeros para serem subtraidos
 				for (int i = 0; i < numSub.length; i++) {
+					// Classe que exibe informaçoes na tela
 					System.out.println("Digite o " + (i + 1) + "º" + " número.");
-					numSub[i] = sc.nextInt();
+					numSub[i] = sc.nextInt();// Captura informações do teclado
 				}
-				subtracao = numSub[0] - numSub[1];
-				System.out.printf("A subtração entre %d e %d é %d \n",numSub[0],numSub[1],subtracao);
+				subtracao = numSub[0] - numSub[1];// Realiza a subtração dos números
+				// Classe que apresante os numeros digitados e a subtraidos dos mesmos
+				System.out.printf("A subtração entre %d e %d é %d \n", numSub[0], numSub[1], subtracao);
 				break;
 			case 3:
 
 				int divisao = 0;
+				// Array com 3 posições
 				int[] numDiv = new int[2];
+				// Interação que ecebe os numeros para serem divididos
 				for (int i = 0; i < numDiv.length; i++) {
+					// Classe que exibe informaçoes na tela
 					System.out.println("Digite o " + (i + 1) + "º" + " número.");
-					numDiv[i] = sc.nextInt();
+					numDiv[i] = sc.nextInt();// Captura informações do teclado
 
 				}
-				divisao = numDiv[0] / numDiv[1];
-				System.out.printf("A divisão entre %d e %d é %d \n",numDiv[0],numDiv[1],divisao);
+				divisao = numDiv[0] / numDiv[1];// Realiza a divisão dos numeros
+				// Classe que apresante os numeros digitados e a dividisos dos mesmos
+				System.out.printf("A divisão entre %d e %d é %d \n", numDiv[0], numDiv[1], divisao);
 				break;
 			case 4:
+				// Variáves para entrada de dados
 				int qtdPessoas;
 				int cont = 0;
 				int contMasculino = 0;
@@ -61,30 +78,32 @@ public class Projeto1 {
 				int somaIdadeFeminino = 0;
 				int mediaM = 0;
 				int mediaF = 0;
+				// ArrayList da classe pessoa
 				ArrayList<Pessoa> listPessoas = new ArrayList<>();
 
-				System.out.print("Digite a quantidade de pessoas!!");
-				qtdPessoas = sc.nextInt();
+				System.out.print("Digite a quantidade de pessoas!!");// Classe que exibe informaçoes na tela
+				qtdPessoas = sc.nextInt();// Recebe a quandidade de pessoas
 
 				for (int i = 0; i < qtdPessoas; i++) {
-					Pessoa p = new Pessoa();
+					Pessoa p = new Pessoa();// Classe pessoa instanciada
 					System.out.println("Digite o nome " + (i + 1) + "ª" + " pessoa!!");
-					p.setNome(sc.next());
+					p.setNome(sc.next());// Recebe o nome da pessoa
 					System.out.println("Digite a idade" + (i + 1) + "ª" + " pessoa!!");
-					p.setIdade(sc.nextInt());
+					p.setIdade(sc.nextInt());// Recebe a idade da pessoa
 					System.out.println("Digite o sexo " + (i + 1) + "ª" + " pessoa M/F!!");
-					p.setSexo(sc.next());
-
+					p.setSexo(sc.next());// Recebe o sexo da pessoa
+					// Verifica se o usuario digitou o caracter correto
 					if (p.getSexo().equals("M") || p.getSexo().equals("m")) {
-						somaIdadeMasculino += p.getIdade();
-						contMasculino++;
-						mediaM = somaIdadeMasculino / contMasculino;
-
+						somaIdadeMasculino += p.getIdade();// Soma as idades masculina
+						contMasculino++;// Conta quantas pessoas do sexo masculino foi digitado
+						mediaM = somaIdadeMasculino / contMasculino;// Calcula a média das idades do sexo masculino
+						// Verifica se o usuario digitou o caracter correto
 					} else if (p.getSexo().equals("F") || p.getSexo().equals("f")) {
-						somaIdadeFeminino += p.getIdade();
-						contFeminino++;
-						mediaF = somaIdadeFeminino / contFeminino;
+						somaIdadeFeminino += p.getIdade();// Soma as idades do sexo feminino
+						contFeminino++;// Conta quantas pessoas do sexo feminino foi digitado
+						mediaF = somaIdadeFeminino / contFeminino;// Calcula a média das idades do sexo feminino
 					} else {
+						// Se o usuário digitar um caracter errado volta para ser insediro novamente
 						System.out.println("Caracter inválido");
 						System.out.println("Digite o nome " + (i + 1) + "ª" + " pessoa!!");
 						p.setNome(sc.next());
@@ -94,14 +113,14 @@ public class Projeto1 {
 						p.setSexo(sc.next());
 					}
 
-					listPessoas.add(p);
-					cont++;
-					somaIdades += p.getIdade();
-					mediaIdades = somaIdades / cont;
+					listPessoas.add(p);// O Array recebe o objeto pessoa
+					cont++;// Conta quantas pessoas foram inseridas
+					somaIdades += p.getIdade();// Soma as idades das pessoas inseridas
+					mediaIdades = somaIdades / cont;// Calcula a médias de idades das pessoas inseridas
 
 				}
 				for (Pessoa pes : listPessoas) {
-
+					// Mostras as pessoas inseridas
 					System.out.println("-----------------------");
 					System.out.println("Nome da pessoa: " + pes.getNome());
 					System.out.println("Idade da pessoa: " + pes.getIdade());
@@ -109,41 +128,49 @@ public class Projeto1 {
 
 				}
 				System.out.println("-----------------------");
+				// Mostra a quantidade de de pessoas inseridas
 				System.out.println("Idade de " + cont + " pessoas calculadas");
+				// Mostra a somas das idades das pessoas inseridas
 				System.out.println("Soma das idades: " + somaIdades);
+				// Mostra a media das idades das pesssos inseridas
 				System.out.println("Média das idades: " + mediaIdades);
+				// Mostra a media das idades masculinas
 				System.out.println("Média das idades Masculino: " + mediaM);
+				// Mostra a media das idades femininas
 				System.out.println("Média das idades Feminino: " + mediaF);
 
 				break;
 			case 5:
+				// ArrayListe que recebe o numeros primos
 				ArrayList<Integer> primo = new ArrayList<>();
+				// ArrayListe que recebe o numeros que não são primos
 				ArrayList<Integer> naoPrimo = new ArrayList<>();
-
+				// Vetor que simula a entrada de 10 numeros digitados pelo usuário
 				int[] numeros = new int[10];
 				int i = 0;
-				int somaPrimo = 0;
-				int somaNaoPrimo = 0;
-
-				for (; i < numeros.length; i++) {
+				int somaPrimo = 0;// Variavel que recebe os numeros primos
+				int somaNaoPrimo = 0;// Variavel que recebe os numeros não primos
+				for (; i < numeros.length; i++) {// Enquanto a quantidade de numeros for menor que 10
 					System.out.println("Digite:");
-					numeros[i] = sc.nextInt();
+					numeros[i] = sc.nextInt();// Captura informações do teclado
+					// Classe que verifica se os numeros primos e não primos
 					VerificaNumerosPrimos v = new VerificaNumerosPrimos();
-					if (v.eNumeroPrimo(numeros[i])) {
+					if (v.eNumeroPrimo(numeros[i])) {// Recebe os numeros primos
 
-						primo.add(numeros[i]);
-						somaPrimo += numeros[i];
+						primo.add(numeros[i]);// Contem os números primos
+						somaPrimo += numeros[i];// soma os números primos
 					} else {
-						naoPrimo.add(numeros[i]);
-						somaNaoPrimo += numeros[i];
+						naoPrimo.add(numeros[i]);// Contem os números não primos
+						somaNaoPrimo += numeros[i];// soma os números não primos
 					}
 
 				}
 
-				System.out.println("Números Primos: " + primo);
-				System.out.println("Soma dos numeros Primos: " + somaPrimo);
+				System.out.println("Números Primos: " + primo);// Mostra os numeros primos
+				System.out.println("Soma dos numeros Primos: " + somaPrimo);// Mostra a soma dos numeros primos
+				// Mostra a soma dos numeros não primos
 				System.out.println("Soma dos numeros não Primos: " + somaNaoPrimo);
-				System.out.println("Números não Primos: " + naoPrimo);
+				System.out.println("Números não Primos: " + naoPrimo);// Mostra os numeros primos
 
 				break;
 			case 6:
@@ -153,7 +180,7 @@ public class Projeto1 {
 				System.out.println("Digite 2 para tranformar de Binario para Decimal.");
 				int escolha;
 				escolha = sc.nextInt();
-				
+
 				if (escolha == 1) {
 					int divisor;
 					// Número em binario que o usuário vai digitar
@@ -179,7 +206,7 @@ public class Projeto1 {
 					System.out.printf("O o numero %d em binario é %s\n ", numero, binario);
 				} else if (escolha == 2) {
 					// Número binário que o usuário vai digitar
-					Scanner leitor =new Scanner(System.in);
+					Scanner leitor = new Scanner(System.in);
 					System.out.println("Digite um numero.");
 					String binario = "";
 					// Pega o número que o usuário digitou.
