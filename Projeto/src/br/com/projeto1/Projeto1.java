@@ -141,36 +141,37 @@ public class Projeto1 {
 
 				break;
 			case 5:
-				// ArrayListe que recebe o numeros primos
-				ArrayList<Integer> primo = new ArrayList<>();
-				// ArrayListe que recebe o numeros que não são primos
-				ArrayList<Integer> naoPrimo = new ArrayList<>();
-				// Vetor que simula a entrada de 10 numeros digitados pelo usuário
-				int[] numeros = new int[10];
-				int i = 0;
-				int somaPrimo = 0;// Variavel que recebe os numeros primos
-				int somaNaoPrimo = 0;// Variavel que recebe os numeros não primos
-				for (; i < numeros.length; i++) {// Enquanto a quantidade de numeros for menor que 10
-					System.out.println("Digite:");
-					numeros[i] = sc.nextInt();// Captura informações do teclado
-					// Classe que verifica se os numeros primos e não primos
-					VerificaNumerosPrimos v = new VerificaNumerosPrimos();
-					if (v.eNumeroPrimo(numeros[i])) {// Recebe os numeros primos
+				// Array list para armazenar os numeros primos
+				ArrayList<Integer> primos = new ArrayList<>();
+				// Array list para armazenar os numeros não primos
+				ArrayList<Integer> naoprimos = new ArrayList<>();
 
-						primo.add(numeros[i]);// Contem os números primos
-						somaPrimo += numeros[i];// soma os números primos
+				int num;
+				int somap = 0;
+				int somaNp = 0;
+				System.out.println("Digite um numero");
+				num = sc.nextInt();// Pega o numero digitado pelo usuario
+				for (int i = 1; i < num; i++) {
+					int contador = 0;
+					for (int j = 1; j <= i; j++) {
+
+						if (i % j == 0)
+							contador++;// conta quantas vezes o numero digitado foi dividido
+					}
+					if (contador == 2) {
+						primos.add(i);// armazena os numeros primos
+						somap = somap + i;// soma dos numeros primos
+
 					} else {
-						naoPrimo.add(numeros[i]);// Contem os números não primos
-						somaNaoPrimo += numeros[i];// soma os números não primos
+						naoprimos.add(i);// armazeno os numeros não primos
+						somaNp = somaNp + i;// calcula a soma dos numeros não primos
 					}
 
 				}
-
-				System.out.println("Números Primos: " + primo);// Mostra os numeros primos
-				System.out.println("Soma dos numeros Primos: " + somaPrimo);// Mostra a soma dos numeros primos
-				// Mostra a soma dos numeros não primos
-				System.out.println("Soma dos numeros não Primos: " + somaNaoPrimo);
-				System.out.println("Números não Primos: " + naoPrimo);// Mostra os numeros primos
+				System.out.print("Primos: " + primos + "\n");// mostra os numeros primos
+				System.out.print("Soma dos números Primos: " + somap + "\n");// soma dos numeros primos
+				System.out.print("Não primos: " + naoprimos + "\n");// numeros não primos
+				System.out.print("Soma dos números não Primos: " + somaNp + "\n");// soma dos numeros não primos
 
 				break;
 			case 6:
